@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('/forum', 'CategoryController@index');
+
+Route::resource('forum', 'PostController');
+
+Route::resource('forumcats', 'CategoryController');

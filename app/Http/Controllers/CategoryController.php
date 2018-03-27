@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Validator;
 
 class CategoryController extends Controller
 {
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('forumcats.create');
     }
 
     /**
@@ -35,7 +36,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $category = new Category;
+        $category->name = $request->input('name');
+        $category->position = $request->input('position');
+        $category->save();
+        $request->session()->flash('message', 'Kategorija sėkmingai sukurta!');
+        return redirect(route('forum.index'));
     }
 
     /**

@@ -104,6 +104,24 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'title' => [
+            'required' => 'Būtina užpildyti laukelį ":attribute" !',
+            'min' => ' ":attribute" turi būti sudarytas bent iš 10 simbolių !'
+        ],
+        'type' => [
+            'required' => 'Būtina užpildyti laukelį ":attribute" !',
+        ],
+        'content' => [
+            'min' => '":attribute" turi būti sudarytas bent iš 20 simbolių !',
+            'required' => 'Būtina užpildyti laukelį ":attribute" !',
+        ],
+        'name' => [
+            'min' => '":attribute" turi būti sudarytas bent iš 3 simbolių !',
+            'required' => 'Būtinai užpildykite lauką ":attribute" !',
+        ],
+        'position' => [
+            'required' => 'Užpildykite lauką ":attribute" !',
+        ],
     ],
 
     /*
@@ -117,6 +135,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'title' => 'Temos Pavadinimas',
+        'type' => 'Tipas',
+        'content' => 'Turinys',
+        'position' => 'Pozicija',
+        'name' => 'Pavadinimas'
+    ],
 
 ];
