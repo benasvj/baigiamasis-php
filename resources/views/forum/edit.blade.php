@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.app')
 
 @section('title', 'Koreguoti Įrašą')
 
@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <label for="content">Turinys</label>
-            <textarea class="form-control" id="content" name="content" rows="5">{{$post->content}}</textarea>
+            <textarea class="form-control" id="article-ckeditor" name="content" rows="5">{{$post->content}}</textarea>
         </div>
         <input type="hidden" name="_method" value="PUT">
         <button type="submit" class="btn btn-success">Atnaujinti</button>

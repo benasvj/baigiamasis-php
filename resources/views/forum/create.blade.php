@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.app')
 
 @section('title', 'Forumas')
 
@@ -17,9 +17,8 @@
         </select>
         <div class="form-group">
             <label for="content">Turinys</label>
-            <textarea class="form-control" id="content" name="content" rows="5"></textarea>
+            <textarea class="form-control" id="article-ckeditor" name="content" rows="5"></textarea>
         </div>
-
         <button type="submit" class="btn btn-success">Sukurti Temą</button>
     </form>
 @endsection
