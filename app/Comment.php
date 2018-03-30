@@ -15,4 +15,9 @@ class Comment extends Model
     public function user(){
         return $this->belongsTo('App\User');
    }
+
+    //kad komentuotume į komentarą (reply)
+    public function comments(){
+        return $this->morphMany('App\Comment', 'commentable');
+    }   
 }

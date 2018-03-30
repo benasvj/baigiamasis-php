@@ -21,12 +21,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/forum', 'CategoryController@index');
-
 Route::resource('forum', 'PostController');
 
 Route::resource('forumcats', 'CategoryController');
 
+//Komentaramas
 Route::resource('comment', 'CommentController',['only'=>['update','destroy']]);
 
 Route::post('/comment/create/{post}', 'CommentController@addPostComment')->name('postcomment.store')->middleware('auth');
+
+//Reply žinutėms
+Route::post('/reply/create/{comment}', 'CommentController@addReplyComment')->name('replycomment.store')->middleware('auth');

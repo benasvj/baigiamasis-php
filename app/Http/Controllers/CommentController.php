@@ -28,9 +28,9 @@ class CommentController extends Controller
         $this->validate($request,[
             'body' => 'required'
         ]);
-
+        //tikrinimas, kad vartotojas neistrintu ne savo komentaro
         if(auth()->user()->id !== $comment->user_id){
-            return redirect('/forum')->with('error', 'Unauthorized Page');
+            return redirect('/forum');
         }
         
         $comment->update($request->all());
@@ -45,11 +45,26 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        //tikrinimas, kad vartotojas neistrintu ne savo komentaro
         if(auth()->user()->id !== $comment->user_id){
-            return redirect('/forum')->with('error', 'Unauthorized Page');
+            return redirect('/forum');
         }
         $comment->delete();
-
         return back()->withMessage('Komentaras pašalintas!');
+    }
+
+
+    //Reply Dalykai
+    public function addReplyComment(Request $request, Comment $comment)
+    {
+        $this->validate($request,[
+            'body' => 'required'
+        ]);
+        $reply=new Comment;
+        $reply->body=$request->body;
+        $reply->user_id=Auth::id();
+        
+        $comment->comments()->save($reply);
+        return back()->withMessage('Atsakyta!');
     }
 }
