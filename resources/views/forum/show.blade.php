@@ -68,7 +68,7 @@
 
             {{--  Forma komentaro trynimui  --}}
             <form action={{ route('comment.destroy', ['id' => $comment->id]) }} method="POST">
-                @csrf
+                
                 <input type="hidden" name="_method" value="DELETE">
                 <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-minus-circle"></i></button>
             </form>
@@ -173,18 +173,15 @@
 @section('js')
 
     <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        var token = '{{Session::token()}}';
-        var urlLike = '{{route('likeIt')}}';
-
+        //reply suskleidimas
         function toggleReply(commentId){
             $('.reply-form-'+commentId).css("display", "");
             $('.reply-form-'+commentId).toggleClass(`.reply-form-${commentId}`);
         };
+
+        //Del Like ir Dislike pridėjimo
+        var token = '{{Session::token()}}';
+        var urlLike = '{{route('likeIt')}}';
 
         $('.like').click(function(event){
             event.preventDefault();
@@ -197,9 +194,8 @@
                 data: {isLike: isLike, commentId: commentId, _token: token}
             })
                 .done(function(){
-                    //Atnaujinti puslapi
+                    console.log('ok');
                 });
         });
-
     </script>
 @endsection
