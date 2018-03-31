@@ -32,3 +32,6 @@ Route::post('/comment/create/{post}', 'CommentController@addPostComment')->name(
 
 //Reply žinutėms
 Route::post('/reply/create/{comment}', 'CommentController@addReplyComment')->name('replycomment.store')->middleware('auth');
+
+//Likes
+Route::post('/like', 'CommentController@likeIt')->name('likeIt');

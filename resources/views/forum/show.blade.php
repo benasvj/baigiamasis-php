@@ -22,11 +22,15 @@
     </div>
     <br>
     @foreach($post->comments as $comment)
-        <div class="card border-dark mb-3" style="max-width: 80rem;">
+        <div class="card border-dark mb-3" style="max-width: 80rem;" data-commentid="{{$comment->id}}">
             <div class="card-header">{{$comment->user->name}}</div>
             <div class="card-body">
                 <h4 class="card-title">{{$comment->body}}</h4>
                 <p class="card-text">Autorius: {{$comment->user->name}} Paskelbta: {{$comment->created_at}}</p>
+                <div class="likes-container">
+                    <a href="#" class="like">Like: <i class="fas fa-thumbs-up"></i></a>
+                    <a href="#" class="like">Dislike: <i class="fas fa-thumbs-down"></i></a>
+                </div>
             {{--  komentaro editinimas ir trynimas  --}}
             @if (Auth::check())
                 @if(Auth::user()->id == $comment->user_id)
@@ -95,6 +99,10 @@
                     <div class="card-body">
                         <h4 class="card-title">{{$reply->body}}</h4>
                         <p class="card-text">Autorius: {{$reply->user->name}} Paskelbta: {{$reply->created_at}}</p>
+                        <div class="likes-container">
+                            <a href="#" class="like">Like: <i class="fas fa-thumbs-up"></i></a>
+                            <a href="#" class="like">Dislike: <i class="fas fa-thumbs-down"></i></a>
+                        </div>
                     {{--  reply editinimas ir trynimas  --}}
                     @if (Auth::check())
                         @if(Auth::user()->id == $reply->user_id)
@@ -163,10 +171,35 @@
 @endsection
 
 @section('js')
+
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var token = '{{Session::token()}}';
+        var urlLike = '{{route('likeIt')}}';
+
         function toggleReply(commentId){
             $('.reply-form-'+commentId).css("display", "");
             $('.reply-form-'+commentId).toggleClass(`.reply-form-${commentId}`);
-        }
+        };
+
+        $('.like').click(function(event){
+            event.preventDefault();
+            commentId = event.target.parentNode.parentNode.parentNode.dataset['commentid'];
+            var isLike = event.target.previousElementSibling == null? true : false;
+            console.log(commentId);
+            $.ajax({
+                method: 'POST',
+                url: urlLike,
+                data: {isLike: isLike, commentId: commentId, _token: token}
+            })
+                .done(function(){
+                    //Atnaujinti puslapi
+                });
+        });
+
     </script>
 @endsection

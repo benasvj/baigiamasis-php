@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Post;
+use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -66,5 +67,39 @@ class CommentController extends Controller
         
         $comment->comments()->save($reply);
         return back()->withMessage('Atsakyta!');
+    }
+
+    public function likeIt(Request $request)
+    {
+        $comment_id = $request['commentId]'];
+        $is_like = $request['isLike'] === "true";
+        $update = false;
+        $comment = Comment::find($comment_id);
+        if (!$post){
+            return null;
+        }
+        $user = Auth::user();
+        //tikrinam ar sitas vartotojas kuris bando palaikint, jau ner palaikines
+        $like = $user->likes()-where('comment_id', $comment_id)->first();
+        if ($like){
+            $already_like = $like->like;
+            $update = true;
+            //jei buvom paspaude ant patinka ir dabar vel paspaudem ant patinka (undo)
+            if ($already_like = $is_like){
+                $like->delete();
+                return null;
+            }
+        } else {
+            $like = new Like;
+        }
+        $like->like = $is_like;
+        $like->user_id = $user->id;
+        $like->comment_id = $comment->id;
+        if ($update){
+            $like->update();
+        } else {
+            $like->save();
+        }
+        return back()->withMessage('Like uzskaitytas!');
     }
 }
