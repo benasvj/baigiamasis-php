@@ -3,17 +3,21 @@
 @section('title', 'Forumas')
 
 @section('sidebar')
-
+    @php
+        //kintamieji
+        $lastone=null;
+        $showlast=1;
+    @endphp
     <br><h2>Kategorija</h2>
     <hr>
     <ul class="list-group">
         <a href={{route('forum.index')}} class="list-group-item d-flex justify-content-between align-items-center">
             Visos Temos
-            <span class="badge badge-primary">{{$counter}}</span>
+            <span class="badge badge-primary">{{\App\Post::all()->count()}}</span>
         </a>
-        @forelse($categories as $category)
+        @forelse(\App\Category::all() as $category)
 
-        <a href="" class="list-group-item d-flex justify-content-between align-items-center">
+        <a href={{route('forum.index', ['cat' => $category->id])}} class="list-group-item d-flex justify-content-between align-items-center">
             {{$category->name}}
             <span class="badge badge-primary">{{$category->posts_cat->count()}}</span>
         </a>

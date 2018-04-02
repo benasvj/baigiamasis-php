@@ -19,15 +19,17 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::orderBy('position', 'asc')->get();
-        $counter = $posts = Post::all()->count();
-        $posts = Post::paginate(2);
+        if($request->has('cat')){
+            $cat = $request->input('cat');
+            $posts = Post::where('category_id', $cat)->paginate(3);
+            $posts->appends(['cat' => $cat]);
+        }else{
+            $posts = Post::paginate(3);
+        }
         return view('forum.index', [
             'posts' => $posts,
-            'categories'=>$categories,
-            'counter'=>$counter,
         ]);
     }
 

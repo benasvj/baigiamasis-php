@@ -80,7 +80,7 @@ class CommentController extends Controller
         }
         $user = Auth::user();
         //tikrinam ar sitas vartotojas kuris bando palaikint, jau ner palaikines
-        $like = $user->likes()-where('comment_id', $comment_id)->first();
+        $like = $user->likes()->where('comment_id', $comment_id)->first();
         if ($like){
             $already_like = $like->like;
             $update = true;
@@ -100,6 +100,6 @@ class CommentController extends Controller
         } else {
             $like->save();
         }
-        return back()->withMessage('Like uzskaitytas!');
+        return null;
     }
 }

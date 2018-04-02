@@ -1,0 +1,57 @@
+.box-forum-list{
+}
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.post-name{
+    padding:1% 2%;
+    background-color:black;
+    box-sizing: border-box;
+    .post-name-link{
+        color:white;
+        text-transform: capitalize;
+        letter-spacing:1px;
+        font-size:17px;
+    }
+}
+.box-post-container{
+    border: 1px solid darkgray;
+}
+.box-post-left{
+    float:left;
+    width:65%;
+    padding:1% 2%;
+    h6{
+        color:black;
+        text-transform: none;
+        letter-spacing:1px;
+        font-size:15px;
+        font-weight:normal;
+    }
+    p{
+        color:rgb(70, 70, 70);
+        text-transform: none;
+        letter-spacing:0.5px;
+        font-size:13px;
+        span{
+            color:darkgray; 
+        }
+    }
+}
+
+.box-post-right{
+    padding:1% 2%;
+    float:right;
+    width:25%;
+    p{
+        color:rgb(70, 70, 70);
+        text-transform: none;
+        letter-spacing:0.5px;
+        font-size:13px;
+        span{
+            color:darkgray; 
+        }
+    }
+}
