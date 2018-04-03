@@ -22,13 +22,24 @@
 @section('js')
     <script>
         
-        var channelList = ["sauliuslol", "chosenonelol", "loltyler1", "GubbaTV", "Voyboy", "RobotCaleb", "noobs2ninjas", "freecodecamp"];
+        var channelList = ["Nightblue3", "sauliuslol", "chosenonelol", "loltyler1", "Voyboy", "KaraliusLOL", "KNOK1ZYGIS", "Paikute", "Kibirine", "AsDievas", "ArnasSTB", "Gretasweet" ];
         var channelName
         var channelID
         var channelLink
         var channelLogo
         var streamContent
 
+        // var following =[];
+        // var followerURL= "https://wind-bow.glitch.me/twitch-api/users/suburu5/follows/channels/?callback=?";
+        // $.getJSON(followerURL, function(data2){
+        //     for (var i=0;i<data2.follows.length;i++){
+        //         var displayName= data2.follows[i].channel.display_name;
+        //         following.push(displayName);
+
+        //     }
+        //     console.log(following);
+        //     console.log(channelList);
+        // })
         $(document).ready(function (){
             $.each(channelList, function (i, val) {
                 $.getJSON('https://wind-bow.gomix.me/twitch-api/streams/' + val +'?callback=?', function (st) {
