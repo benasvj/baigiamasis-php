@@ -13,7 +13,10 @@ class AddIconImageToUsers extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('users', function($table){
+            $table->string('user_image');
+        });
+
     }
 
     /**
@@ -23,6 +26,8 @@ class AddIconImageToUsers extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function($table){
+            $table->dropColumn('user_image');
+        });
     }
 }

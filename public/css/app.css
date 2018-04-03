@@ -10119,6 +10119,8 @@ a.text-dark:focus {
 .show-post-left img {
   height: 190px;
   width: 190px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .show-post-left p {
@@ -10218,6 +10220,8 @@ a.text-dark:focus {
 .show-post-left-com img {
   height: 190px;
   width: 190px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .show-post-left-com p {
@@ -10317,6 +10321,8 @@ a.text-dark:focus {
 }
 
 .show-post-left-rep img {
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 190px;
   width: 190px;
 }
@@ -10353,6 +10359,10 @@ a.text-dark:focus {
 
 .pull-right {
   margin-left: 30% !important;
+}
+
+.atgal {
+  border: 1px solid black;
 }
 
 .card-profile .card-header {
@@ -10447,6 +10457,30 @@ a.text-dark:focus {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 50px 30px;
+}
+
+#updateIcon {
+  display: none;
+}
+
+.ikonosForma {
+  display: block !important;
+}
+
+#updateName {
+  display: none;
+}
+
+.vardoForma {
+  display: block !important;
+}
+
+#updateEmail {
+  display: none;
+}
+
+.emailoForma {
+  display: block !important;
 }
 
 .navbar-laravel {

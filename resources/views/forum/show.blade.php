@@ -32,6 +32,11 @@
             $('.reply-form-'+commentId).css("display", "block");
         };
 
+        function atgal(commentId){
+            $('.btn-default-'+commentId).css("display", "block");
+            $('.reply-form-'+commentId).css("display", "none");
+        };
+
         //Del Like ir Dislike pridėjimo
         var token = '{{Session::token()}}';
         var urlLike = '{{route('likeIt')}}';

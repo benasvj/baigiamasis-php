@@ -23,7 +23,7 @@
     <div class="show-post-main">
         <div class="show-post-left">
             <h3>{{$post->user->name}}</h3>
-            <div class="icon-container"><img src="/storage/photo.jpg" alt="xxx"></div>
+            <div class="icon-container"><img src="/storage/user_images/{{$post->user->user_image}}"  alt="xxx"></div>
             <p>Sukūrė temų: {{$post->user->posts->count()}}</p>
         </div>
         <div class="show-post-right">

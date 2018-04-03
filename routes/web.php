@@ -37,7 +37,11 @@ Route::post('/reply/create/{comment}', 'CommentController@addReplyComment')->nam
 Route::post('/like', 'CommentController@likeIt')->name('likeIt');
 
 //User profilis
-Route::resource('member', 'UserController');
+Route::get('/vartotojas', 'UserController@index')->name('user.index');
+Route::post('/vartotojas/ikona/{id}', 'UserController@updateIcon')->name('usericon');
+Route::post('/vartotojas/vardas/{id}', 'UserController@updateName')->name('username');
+Route::post('/vartotojas/elPastas/{id}', 'UserController@updateEmail')->name('useremail');
+
 
 //Streameriai
 Route::get('/streameriai', 'StreamerController@index');

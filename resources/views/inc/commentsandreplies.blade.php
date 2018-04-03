@@ -50,7 +50,7 @@
         <div class="show-post-main-com" data-commentid="{{$comment->id}}">
             <div class="show-post-left-com">
                 <h3>{{$comment->user->name}}</h3>
-                <div class="icon-container-com"><img src="/storage/photo.jpg" alt="xxx"></div>
+                <div class="icon-container-com"><img src="/storage/user_images/{{$comment->user->user_image}}" alt="xxx"></div>
                 <p>Sukūrė temų: {{$comment->user->posts->count()}}</p>
             </div>
             <div class="show-post-right-com">
@@ -78,6 +78,7 @@
                                         
                 <button type="submit" class="btn btn-primary">Atsakyti</button>
             </form>
+            <a class="btn btn-default" onclick="atgal('{{$comment->id}}')">Atgal</a>
         </div>
         <br><br><br>
         {{--  replies  --}}
@@ -131,7 +132,7 @@
                 <div class="show-post-main-rep" data-commentid="{{$reply->id}}">
                     <div class="show-post-left-rep">
                         <h3>{{$reply->user->name}}</h3>
-                        <div class="icon-container-rep"><img src="/storage/photo.jpg" alt="xxx"></div>
+                        <div class="icon-container-rep"><img src="/storage/user_images/{{$reply->user->user_image}}" alt="xxx"></div>
                         <p>Sukūrė temų: {{$reply->user->posts->count()}}</p>
                     </div>
                     <div class="show-post-right-rep">

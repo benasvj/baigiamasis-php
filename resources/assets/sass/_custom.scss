@@ -110,6 +110,7 @@
     img{
         height: 190px;
         width: 190px;
+        object-fit:cover;
     }
     p{
         margin:10px 6%;
@@ -198,6 +199,7 @@
     img{
         height: 190px;
         width: 190px;
+        object-fit:cover;
     }
     p{
         margin:10px 6%;
@@ -286,6 +288,7 @@
         border:1px solid black;
     }
     img{
+        object-fit:cover;
         height: 190px;
         width: 190px;
     }
@@ -322,6 +325,9 @@
     margin-left:30% !important;
 }
 
+.atgal{
+    border:1px solid black;
+}
 //profilio skyrius
 .card-profile{
     .card-header{
@@ -399,3 +405,27 @@
     padding:50px 30px;
 }
 
+//toggle classes
+
+#updateIcon{
+    display:none;
+}
+.ikonosForma {
+    display:block !important;
+}
+
+#updateName{
+    display:none;
+}
+
+.vardoForma {
+    display:block !important;
+}
+
+#updateEmail{
+    display:none;
+}
+
+.emailoForma {
+    display:block !important;
+}
