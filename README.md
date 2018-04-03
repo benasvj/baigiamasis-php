@@ -1,6 +1,6 @@
 # baigiamasis-php
 
-ijos tikslas - teikti informaciją apie kompiuterinį "League of Legends" žaidimą, susijusias naujienas, didesnį dėmėsį skiriant Lietuvos rinkai.
+Aplikacijos tikslas - teikti informaciją apie kompiuterinį "League of Legends" žaidimą, susijusias naujienas, didesnį dėmėsį skiriant Lietuvos rinkai.
 Taip pat, vienyti šio žaidimo sekėjų bendruomenę ir skatinti tarpusavyje dalintis įžvalgomis bei žiniomis. Aplikacija yra suskirstyta į kelias pagrindines dalis:
 
 1. Forumas
