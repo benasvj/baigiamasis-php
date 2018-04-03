@@ -26,9 +26,10 @@
 
     <script>
         //reply suskleidimas
+ 
         function toggleReply(commentId){
-            $('.reply-form-'+commentId).css("display", "");
-            $('.reply-form-'+commentId).toggleClass(`.reply-form-${commentId}`);
+            $('.btn-default-'+commentId).css("display", "none");
+            $('.reply-form-'+commentId).css("display", "block");
         };
 
         //Del Like ir Dislike pridėjimo

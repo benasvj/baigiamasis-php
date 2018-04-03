@@ -1,7 +1,5 @@
 @extends('layouts.forumfront')
 
-@section('title', 'Forumas')
-
 @section('sidebar')
     @php
         //kintamieji

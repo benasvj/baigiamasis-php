@@ -20,7 +20,7 @@
                             <a class="nav-link" href="">Turnyrai</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Streamer'iai</a>
+                        <a class="nav-link" href="/streameriai">Streamer'iai</a>
                     </li>
                 </ul>
 
@@ -37,6 +37,7 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('member.index')}}">Mano Profilis</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

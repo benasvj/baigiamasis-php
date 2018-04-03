@@ -35,3 +35,9 @@ Route::post('/reply/create/{comment}', 'CommentController@addReplyComment')->nam
 
 //Likes
 Route::post('/like', 'CommentController@likeIt')->name('likeIt');
+
+//User profilis
+Route::resource('member', 'UserController');
+
+//Streameriai
+Route::get('/streameriai', 'StreamerController@index');

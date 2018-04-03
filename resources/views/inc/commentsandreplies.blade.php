@@ -66,7 +66,7 @@
     </div>
     <br>
     {{--  Reply kurimo forma  --}}
-        <button class="btn btn-xs btn-default" onclick="toggleReply('{{$comment->id}}')">Atsakyti</button>
+        <button class="btn btn-xs btn-default-{{$comment->id}}" onclick="toggleReply('{{$comment->id}}')">Atsakyti</button>
         <div class="reply-form-{{$comment->id}}" style="max-width: 60rem;display:none">
             <form action={{route('replycomment.store', ['id' => $comment->id])}} method="post">
                 @csrf

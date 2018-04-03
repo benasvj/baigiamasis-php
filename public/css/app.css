@@ -10355,6 +10355,100 @@ a.text-dark:focus {
   margin-left: 30% !important;
 }
 
+.card-profile .card-header {
+  background: black;
+  color: white;
+}
+
+.card-profile .card-body h6 {
+  color: black !important;
+  font-size: 15px;
+}
+
+.card-profile .img-container {
+  width: 30%;
+  height: 200x;
+  width: 200px;
+}
+
+.card-profile img {
+  width: 100% !important;
+  border: 1px solid black;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+}
+
+.card-profile li {
+  color: black;
+  font-size: 15px;
+  font-weight: 700 !important;
+}
+
+.card-profile p {
+  font-style: italic;
+  color: #4516b1;
+}
+
+.card-profile a {
+  display: none;
+}
+
+.card-profile .list-group-item:hover a {
+  display: block;
+}
+
+.card-profile .img-container:hover a {
+  display: block;
+}
+
+.streamer-box {
+  width: 80%;
+  height: 300px;
+  border: 1px solid black;
+  background: black;
+  padding-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.streamer-box p {
+  font-size: 22px;
+  color: green;
+}
+
+.streamer-box a {
+  color: white;
+}
+
+.streamer-box span {
+  font-size: 22px;
+  color: red;
+}
+
+.streamer-box a:hover {
+  color: #3b1e3b;
+}
+
+.streamer-box h6 {
+  color: white;
+  font-size: 15px;
+  text-transform: none;
+  letter-spacing: 0.7px;
+}
+
+.insider {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 50px 30px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
