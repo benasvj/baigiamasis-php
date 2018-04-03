@@ -3,23 +3,25 @@
 @section('content')
     @include('inc.onepost')
     
-    @include('inc.commentsandreplies')
-
     <br>
-
     {{--  Naujo Komentaro Kurimas  --}}
     <div class="jumbotron"  style="max-width: 80rem;" aria-label="Third group">
+        <button class="btn btn-success" onclick="comment()">Komentuoti</button>
+        <div id="newComment">
         <form action={{route('postcomment.store', ['id' => $post->id])}} method="post">
             @csrf
-            <h3>Rašyti Komentarą</h3>
+            <br>
+            <h3>Komentaras</h3>
 
             <div class="form-group">
                 <textarea class="form-control" id="article-ckeditor" name="body" rows="7"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Komentuoti</button>
+            <button type="submit" class="btn btn-primary">Go!</button>
         </form>
+        </div>
     </div>
+    @include('inc.commentsandreplies')
 @endsection
 
 @section('js')
@@ -37,23 +39,9 @@
             $('.reply-form-'+commentId).css("display", "none");
         };
 
-        //Del Like ir Dislike pridėjimo
-        var token = '{{Session::token()}}';
-        var urlLike = '{{route('likeIt')}}';
-
-        $('.like').click(function(event){
-            event.preventDefault();
-            commentId = event.target.parentNode.parentNode.parentNode.dataset['commentid'];
-            var isLike = event.target.previousElementSibling == null? true : false;
-            console.log(commentId);
-            $.ajax({
-                method: 'POST',
-                url: urlLike,
-                data: {isLike: isLike, commentId: commentId, _token: token}
-            })
-                .done(function(){
-                    console.log('ok');
-                });
-        });
+        function comment() {
+            var element = document.getElementById("newComment");
+            element.classList.toggle("showCommentForm");
+        }
     </script>
 @endsection

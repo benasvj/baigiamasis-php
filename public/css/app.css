@@ -10483,6 +10483,37 @@ a.text-dark:focus {
   display: block !important;
 }
 
+#newComment {
+  display: none;
+}
+
+.showCommentForm {
+  display: block !important;
+}
+
+#newArticle {
+  display: none;
+}
+
+.newArticleStyle {
+  display: block !important;
+}
+
+.article-image {
+  width: 100%;
+}
+
+.article-image img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.article-box p {
+  color: black;
+  font-size: 15px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

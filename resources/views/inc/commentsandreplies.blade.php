@@ -54,11 +54,24 @@
                 <p>Sukūrė temų: {{$comment->user->posts->count()}}</p>
             </div>
             <div class="show-post-right-com">
-                <p>{{$comment->body}}</p>
+                @php 
+                    $balance = $comment->likes->count() - $comment->dislikes->count();
+                @endphp
+                @if($balance>-2)
+                    <p>{{$comment->body}}</p>
+                @else
+                    <p style="">Šis komentaras susilaukė per daug neigiamų įvertinimų</p>
+                @endif
                 <hr>
                 <div class="show-post-footer-com">
-                    <a href="#" class="like">Like: <i class="fas fa-thumbs-up"></i></a>
-                    <a href="#" class="like">Dislike: <i class="fas fa-thumbs-down"></i></a>
+                    <a href={{ route('likeIt', ['id' => $comment->id])}} class="like">Like: <i class="fas fa-thumbs-up"></i></a>
+                    <a href={{ route('dislikeIt', ['id' => $comment->id])}} class="like">Dislike: <i class="fas fa-thumbs-down"></i></a>
+                    @if($balance<0)
+                        <p style="color:red;font-size:18px;">{{$balance}}</p>
+                    @else
+                        <p style="color:green;font-size:18px;">+ {{$balance}}</p>
+                    @endif
+                    
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -136,11 +149,23 @@
                         <p>Sukūrė temų: {{$reply->user->posts->count()}}</p>
                     </div>
                     <div class="show-post-right-rep">
-                        <p>{{$reply->body}}</p>
+                        @php 
+                            $balanceR = $reply->likes->count() - $reply->dislikes->count();
+                        @endphp
+                        @if($balanceR>-2)
+                            <p>{{$reply->body}}</p>
+                        @else
+                            <p style="">(auto deleted)</p>
+                        @endif
                         <hr>
                         <div class="show-post-footer-rep">
-                            <a href="#" class="like">Like: <i class="fas fa-thumbs-up"></i></a>
-                            <a href="#" class="like">Dislike: <i class="fas fa-thumbs-down"></i></a>
+                            <a href={{ route('likeIt', ['id' => $reply->id])}} class="like">Like: <i class="fas fa-thumbs-up"></i></a>
+                            <a href={{ route('dislikeIt', ['id' => $reply->id])}} class="like">Dislike: <i class="fas fa-thumbs-down"></i></a>
+                            @if($balanceR<0)
+                                <p style="color:red;font-size:18px;">{{$balanceR}}</p>
+                            @else
+                                <p style="color:green;font-size:18px;">+ {{$balanceR}}</p>
+                            @endif
                         </div>
                     </div>
                     <div class="clearfix"></div>

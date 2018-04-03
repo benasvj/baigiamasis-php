@@ -34,7 +34,8 @@ Route::post('/comment/create/{post}', 'CommentController@addPostComment')->name(
 Route::post('/reply/create/{comment}', 'CommentController@addReplyComment')->name('replycomment.store')->middleware('auth');
 
 //Likes
-Route::post('/like', 'CommentController@likeIt')->name('likeIt');
+Route::get('/like/{id}', 'CommentController@likeIt')->name('likeIt');
+Route::get('/dislike/{id}', 'CommentController@dislikeIt')->name('dislikeIt');
 
 //User profilis
 Route::get('/vartotojas', 'UserController@index')->name('user.index');
@@ -42,6 +43,8 @@ Route::post('/vartotojas/ikona/{id}', 'UserController@updateIcon')->name('useric
 Route::post('/vartotojas/vardas/{id}', 'UserController@updateName')->name('username');
 Route::post('/vartotojas/elPastas/{id}', 'UserController@updateEmail')->name('useremail');
 
-
 //Streameriai
 Route::get('/streameriai', 'StreamerController@index');
+
+//Naujienos
+Route::resource('straipsniai', 'ArticleController');

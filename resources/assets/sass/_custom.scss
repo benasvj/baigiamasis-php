@@ -429,3 +429,34 @@
 .emailoForma {
     display:block !important;
 }
+
+//komentavimo formos rodymas
+#newComment{
+    display:none;
+}
+.showCommentForm{
+    display:block !important;
+}
+
+#newArticle{
+    display:none;
+}
+.newArticleStyle{
+    display:block !important;
+}
+
+//articles (naujienos)
+.article-image{
+    width:100%;
+    img{
+        width:100%;
+        object-fit:cover;
+    }
+}
+.article-box{
+    p{
+        color:black;
+        font-size:15px;
+    }
+}
+

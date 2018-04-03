@@ -26,7 +26,9 @@
 
     </ul>
     <br>
-    <a href="{{route('forumcats.create')}}" class="btn btn-primary">Prideti Kategoriją</a>
+    @if(auth()->user()->name == "admin")
+        <a href="{{route('forumcats.create')}}" class="btn btn-primary">Prideti Kategoriją</a>
+    @endif
 @endsection
 
 @section('content')

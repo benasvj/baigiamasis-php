@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Post;
 use App\Like;
+use App\Dislike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -69,37 +70,44 @@ class CommentController extends Controller
         return back()->withMessage('Atsakyta!');
     }
 
-    public function likeIt(Request $request)
+    public function likeIt($id)
     {
-        $comment_id = $request['commentId]'];
-        $is_like = $request['isLike'] === "true";
-        $update = false;
-        $comment = Comment::find($comment_id);
-        if (!$post){
-            return null;
-        }
         $user = Auth::user();
-        //tikrinam ar sitas vartotojas kuris bando palaikint, jau ner palaikines
-        $like = $user->likes()->where('comment_id', $comment_id)->first();
+        $comment_find = Comment::find($id);
+        //tikrinam ar sitas vartotojas jau spaude like
+        $like = $user->likes()->where('comment_id', $id)->first();
         if ($like){
-            $already_like = $like->like;
-            $update = true;
-            //jei buvom paspaude ant patinka ir dabar vel paspaudem ant patinka (undo)
-            if ($already_like = $is_like){
-                $like->delete();
-                return null;
-            }
-        } else {
+            $like->delete();
+            $mess = "Like pašalintas!";
+        }else{
             $like = new Like;
-        }
-        $like->like = $is_like;
-        $like->user_id = $user->id;
-        $like->comment_id = $comment->id;
-        if ($update){
-            $like->update();
-        } else {
+            $like->like = true;
+            $like->user_id = $user->id;
+            $like->comment_id = $id;
             $like->save();
+            $mess = "Like užskaitytas!";
         }
-        return null;
+        return back()->withMessage($mess);
     }
+
+    public function dislikeIt($id)
+    {
+        $user = Auth::user();
+        $comment_find = Comment::find($id);
+        //tikrinam ar sitas vartotojas jau spaude like
+        $dislike = $user->dislikes()->where('comment_id', $id)->first();
+        if ($dislike){
+            $dislike->delete();
+            $mess = "Dislike pašalintas!";
+        }else{
+            $dislike = new Dislike;
+            $dislike->dislike = true;
+            $dislike->user_id = $user->id;
+            $dislike->comment_id = $id;
+            $dislike->save();
+            $mess = "Dislike užskaitytas!";
+        }
+        return back()->withMessage($mess);
+    }
+  
 }
